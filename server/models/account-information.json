@@ -1,0 +1,30 @@
+{
+  "name": "accountInformation",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "primaryAccountNo": {
+      "type": "number",
+      "required": true
+    },
+    "secondaryAccountNo": {
+      "type": "number",
+      "required": true
+    },
+    "accountType": {
+      "type": "string",
+      "required": true
+    },
+    "isDefaultAccount": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

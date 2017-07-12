@@ -1,0 +1,96 @@
+{
+  "name": "ACInfo",
+  "idInjection": true,
+  "base": "PersistedModel",
+  "properties": {
+    "AccountNumber": {
+      "type": "string",
+      "default":"123456"
+    },
+    "TransactionId": {
+      "type": "string",
+      "default":"001"
+    },
+    "PermanentAccountNumber": {
+      "type": "string",
+      "default":"987"
+    },
+    "TransactionAmount": {
+      "type": "string",
+      "default":"100"
+    },
+    "TransactionCurrencyCode": {
+      "type": "string",
+      "default":"$"
+    },
+    "CreditDebitIndicator": {
+      "type": "string",
+      "default":"C"
+    },
+    "TransactionStatus": {
+      "type": "string",
+      "default":"P"
+    },
+    "PostedDateTime": {
+      "type": "string",
+      "default":"2017-07-10"
+    },
+    "BookedDateTime": {
+      "type": "string",
+      "default":"2017-07-10"
+    },
+    "TransactionDescription": {
+      "type": "string",
+      "default":"Deposit Fund"
+    },
+    "Type": {
+      "type": "string",
+      "default":"SB"
+    },
+    "InterimBookedBalanceAmount": {
+      "type": "string",
+      "default":"50"
+    },
+    "InterimBookedBalanceCurrencyCode": {
+      "type": "string",
+      "default":"$"
+    },
+    "BankTransactionCode": {
+      "type": "string",
+      "default":"CIT"
+    },
+    "BankTransactionSubCode": {
+      "type": "string",
+      "default":"004"
+    },
+    "ProprietaryTransactionCode": {
+      "type": "string",
+      "default":"ABC"
+    },
+    "ProprietaryTransactionIssuer": {
+      "type": "string",
+      "default":"SBI"
+    },
+    "MerchantName": {
+      "type": "string",
+      "default":"SBI"
+    },
+    "MerchantCategoryCode": {
+      "type": "string",
+      "default":"Central"
+    },
+    "InterimBookedCreditDebitIndicator": {
+      "type": "string",
+      "default":"C"
+    }
+  },
+  "validations": [],
+  "relations": {
+      "dummyRestModels": {
+      "type": "embedsMany",
+      "model": "dummyRestModel",
+      "foreignKey": ""
+    }},
+  "acls": [],
+  "methods": {}
+}

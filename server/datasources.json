@@ -1,0 +1,37 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "accountInfoDS": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost:27017/accountInfoDB",
+    "database": "accountInfoDB",
+    "password": "krish",
+    "name": "accountInfoDS",
+    "user": "krish",
+    "connector": "mongodb"
+  },
+  "dummyRestApi": {
+    "name": "dummyRestApi",
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://echo.jsontest.com/title/ipsum/content/{querystring}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "searchApi": [
+            "querystring"
+          ]
+        }
+      }
+    ]
+  }
+}

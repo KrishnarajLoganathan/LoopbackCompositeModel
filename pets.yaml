@@ -1,0 +1,109 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Fake Better API
+  description: >
+    This is a basic example API for our talk at http://betterapis.com.
+  termsOfService: http://betterapis.com/terms/
+  contact:
+    name: API Team
+    email: apiteam@betterapis.com
+    url: http://betterapis.com/contact/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: localhost
+basePath: /
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /foo:
+    get:
+      operationId: listFoo
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        default: 10
+        type: integer
+        format: int32
+        description: maximum number of foo to return
+      responses:
+        200:
+          description: List all foo
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Foo'
+    put:
+      operationId: putFoo
+      produces:
+      - application/json
+      parameters:
+      - name: foo
+        in: body
+        required: true
+        description: Data representing a foo
+        schema:
+          $ref: '#/definitions/Foo'
+      responses:
+        200:
+          description: Updates a foo
+          schema:
+            type: object
+        400:
+          description: Invalid foo data
+    post:
+      operationId: postFoo
+      produces:
+      - application/json
+      parameters:
+      - name: foo
+        in: body
+        required: true
+        description: Data representing a foo
+        schema:
+          $ref: '#/definitions/Foo'
+      responses:
+        200:
+          description: Creates a foo
+          schema:
+            type: object
+        400:
+          description: Invalid foo data
+  /foo/{fooId}:
+    get:
+      operationId: getFooByID
+      produces:
+      - application/json
+      parameters:
+      - name: fooId
+        in: path
+        required: true
+        type: string
+        description: ID of the foo
+      responses:
+        200:
+          description: Foo with the specified ID
+          schema:
+            type: object
+        404:
+          description: Foo with specified ID not found
+definitions:
+  Foo:
+    title: Foo
+    description: An example type of object
+    type: object
+    properties:
+      name:
+        type: string
+      score:
+        type: integer
+

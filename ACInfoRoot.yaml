@@ -1,0 +1,112 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Swagger Loopback Assesment
+  description: >
+    Account Info
+  termsOfService: http://localhost/terms/
+  contact:
+    name: Node JS Team
+    email: admin@localhost.com
+    url: http://localhost/contact/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: localhost
+basePath: /
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /:
+    get:
+      operationId: listAcInfo
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        default: 10
+        type: integer
+        format: int32
+        description: maximum number of acInfo to return
+      responses:
+        200:
+          description: List all acInfo
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ACInfo'
+    put:
+      operationId: updateAcInfo
+      produces:
+      - application/json
+      parameters:
+      - name: acInfo
+        in: body
+        required: true
+        description: Data representing a acInfo
+        schema:
+          $ref: '#/definitions/ACInfo'
+      responses:
+        200:
+          description: Updates a acInfo
+          schema:
+            type: object
+        400:
+          description: Invalid acInfo data
+    post:
+      operationId: createACInfo
+      produces:
+      - application/json
+      parameters:
+      - name: acInfo
+        in: body
+        required: true
+        description: Data representing a acInfo
+        schema:
+          $ref: '#/definitions/ACInfo'
+      responses:
+        200:
+          description: Creates a acInfo
+          schema:
+            type: object
+        400:
+          description: Invalid acInfo data
+  /{accountId}:
+    get:
+      operationId: getAcInfoByID
+      produces:
+      - application/json
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        type: string
+        description: ID of the acInfo
+      responses:
+        200:
+          description: acInfo with the specified ID
+          schema:
+            type: object
+        404:
+          description: acInfo with specified ID not found
+definitions:
+  ACInfo:
+    title: ACInfo
+    description: An example type of object
+    type: object
+    properties:
+      primaryAccountNo:
+        type: integer
+      secondaryAccountNo:
+        type: integer
+      accountType:
+            type: string
+      isDefault:
+            type: boolean

@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models/ac-info",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "accountInfoDS"
+  },
+  "AccessToken": {
+    "dataSource": "accountInfoDS",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "accountInfoDS",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "accountInfoDS",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "accountInfoDS",
+    "public": false
+  },
+  "AccountInfo": {
+    "dataSource": "accountInfoDS",
+    "public": true
+  },
+  "ACInfo": {
+    "dataSource": "accountInfoDS",
+    "public": false
+  },
+  "dummyRestModel": {
+    "dataSource": "db",
+    "public": false
+  }
+}

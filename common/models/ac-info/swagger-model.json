@@ -1,0 +1,78 @@
+{
+  "name": "AccountInfo",
+  "base": "Model",
+  "properties": {},
+  "validations": [],
+  "relations": {
+      "dummyRestModels": {
+      "type": "embedsMany",
+      "model": "dummyRestModel",
+      "foreignKey": ""
+    }},
+  "acls": [],
+  "methods": {
+    "getExternalApiData":{
+          "accepts": {"arg": "param1","type": "string"},
+          "returns": {"arg": "apiResponse", "type":"string"}
+    },
+    "getAcInfoById":{ 
+      "produces": [ "application/json" ],
+      "accepts": 
+      [ { "arg": "AccountNumber",
+          "type": "string",
+          "description": "ID of the acInfo",
+          "required": true,
+          "http": { "source": "path" } },
+        { "arg": "SortCode",
+           "type": "string",
+           "description": "sort by field name",
+           "required": false,
+           "http": { "source": "query" } } ],
+      "returns":{"arg": "ACInfo", "type": "ACInfo"},
+      "http": { "verb": "get", "path": "/:AccountNumber" },
+      "description": "Get Account Info by Account Number" 
+      },
+    "createAcInfo":{ 
+      "produces": [ "application/json" ],
+      "accepts": 
+      [ { "arg": "acInfo",
+          "type": "ACInfo",
+          "description": "Data representing a acInfo",
+          "required": true,
+          "http": { "source": "body" } } ],
+      "returns":{"arg": "ACInfo", "type": "ACInfo"},
+      "http": { "verb": "post", "path": "/" },
+      "description": "Create Account Info" 
+    },
+    "updateAcInfo":{ 
+      "produces": [ "application/json" ],
+      "accepts": 
+      [ { "arg": "acInfo",
+          "type": "ACInfo",
+          "description": "Data representing a acInfo",
+          "required": true,
+          "http": { "source": "body" } } ],
+      "returns":{"arg": "ACInfo", "type": "ACInfo"},
+      "http": { "verb": "put", "path": "/" },
+      "description": "Update Account Info" 
+      },
+      "listAcInfo": { 
+        "produces": [ "application/json" ],
+        "accepts": 
+        [ { "arg": "limit",
+            "type": "number",
+            "description": "maximum number of acInfo to return",
+            "required": false,
+            "http": { "source": "query" } } ],
+        "returns": 
+        [ { "description": "List all acInfo",
+            "type": [ "CompositeACInfoExpanded" ],
+            "arg": "data",
+            "root": true } ],
+        "http": { "verb": "get", "path": "/" },
+        "description": "Ac Info's" 
+        }
+  }
+}
+
+
